@@ -13,6 +13,8 @@ Speech Recognition and Generation: The chatbot can recognize and generate speech
 Telegram Messenger: The chatbot operates within the Telegram messenger platform.
 Conversation Context: The chatbot maintains conversation context to provide more coherent responses.
 
+![Context](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/context.png)
+
 # Project Structure
 
 The project consists of the following files:
