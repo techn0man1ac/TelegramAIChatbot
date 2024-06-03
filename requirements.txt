@@ -1,0 +1,5 @@
+gtts==2.2.3
+librosa==0.8.1
+python-telegram-bot==13.7
+soundfile==0.10.3.post1
+speechrecognition==3.8.1
