@@ -2,7 +2,7 @@
 
 ![Copilot_Generated_Bot_Image](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/CopilotGeneratedBotImage.jpg)
 
-This project aims to develop a Ukrainian chatbot using the ChatGPT language model. The project is authored by Serhii Trush.
+This project aims to develop a Ukrainian chatbot using the LLAMA3 8B language model. The project is authored by Serhii Trush.
 
 # Key Features
 
