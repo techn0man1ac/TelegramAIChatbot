@@ -1,8 +1,12 @@
-# Ukrainian Chatbot with ChatGPT
+# Ukrainian Telegram Chatbot with AI
+
+![Copilot_Generated_Bot_Image](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/CopilotGeneratedBotImage.jpg)
 
 This project aims to develop a Ukrainian chatbot using the ChatGPT language model. The project is authored by Serhii Trush.
 
 # Key Features
+
+![Voice_conversations_mode](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/conversationVoice.png)
 
 Ukrainian Language: The chatbot is capable of understanding and generating text in Ukrainian.
 Speech Recognition and Generation: The chatbot can recognize and generate speech in Ukrainian.
@@ -22,13 +26,17 @@ The project consists of the following files:
 - voice_recognition.py: Module for recognizing speech input and converting it to text.
 - ui.py: User interface module for configuring the bot settings.
 
+  ![User_interface](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/UIConfigurationBot.png)
+
 # Usage
 
 To use the chatbot, deploy the project on a server and set up a Telegram bot using the provided token. Users can interact with the bot by sending text or voice messages in Ukrainian. The bot will respond accordingly based on the conversation context and user input.
 
+![Commands_conversation](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/conversationCommands.png)
+
 # Acknowledgments
 
-This project utilizes the ChatGPT language model developed by OpenAI.
+Thanks to ChatGPT for their help with the project.
 
 # License
 
