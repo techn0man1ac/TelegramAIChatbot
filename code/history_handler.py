@@ -1,4 +1,6 @@
-# history_handler.py
+'''
+history_handler.py
+'''
 
 import json
 import os
@@ -6,7 +8,9 @@ from config import HISTORY_DIR
 from error_handling import log_error
 
 def get_history_file(user_id):
-    return os.path.join(HISTORY_DIR, str(user_id), "current_history.json")
+    user_directory = os.path.join(HISTORY_DIR, str(user_id))
+    os.makedirs(user_directory, exist_ok=True)
+    return os.path.join(user_directory, "current_history.json")
 
 def load_history_from_file(user_id):
     history_file = get_history_file(user_id)
@@ -20,8 +24,8 @@ def load_history_from_file(user_id):
         return []
 
 def write_history_to_file(user_id, history):
-    history_file = get_history_file(user_id)
     try:
+        history_file = get_history_file(user_id)
         with open(history_file, 'w', encoding='utf-8') as f:
             json.dump(history, f, ensure_ascii=False, indent=4)
     except Exception as e:
