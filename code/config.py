@@ -10,7 +10,7 @@ BOT_TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN'
 # OpenAI configuration
 OPENAI_API_BASE = "http://localhost:1234/v1"
 OPENAI_API_KEY = "lm-studio"
-LLM_MODEL = "MaziyarPanahi/Llama-3-8B-Instruct-DPO-v0.3-32k-GGUF""
+LLM_MODEL = "MaziyarPanahi/Llama-3-8B-Instruct-DPO-v0.3-32k-GGUF"
 
 MAX_TOKENS = 512 
 # MAX TOKENS in one message
