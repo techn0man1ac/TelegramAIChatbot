@@ -87,7 +87,7 @@ The project consists of several modules, each of which has its own functionality
 - error_handling.py - The module in which errors are logged.
 - history_handler.py - A module for working (downloading and saving) user correspondence, in other words, chat history. Telegram user ID is used to separate user conversations. That is, one user has a separate communication history. The correspondence is stored in the following directory `conversations/id_Telegram_user/` in the file `current_history.json`.
 - message_handler.py - A module that processes messages from a large language model. The library from OpenAI is used.
-- voice_generator.py - A module that generates text (response from LLM) into speech (TTS) in Ukrainian.
+- voice_generator.py - A module that generates text (response from LLM) into speech (TTS) in Ukrainian. Also, to convert OGG to WAV, it uses the pydub library https://pypi.org/project/pydub/
 - voice_recognition.py - A module that performs speech recognition functions (from audio to text) in Ukrainian for further transfer of the text to a large language model, which in turn will generate a response to the user.
 
 ![ProjectStructurePicture](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/ProjectStructure.png)
