@@ -37,14 +37,17 @@ This library has a wide range of functionality for working with AI, and I chose 
 
 # Library versions at the time of development
 
+This project uses several key libraries, here they are:
+
 - telebot == 0.0.5
 - openai == 1.33.0
 - gTTS == 2.5.1
 - SpeechRecognition == 3.10.4
-- librosa == 0.10.2.post1
-- soundfile == 0.12.1
+- pydub == 0.25.1
 
 # Installing and configuring the software
+
+For pydub to work, you need to install FFmpeg, here's how to install it: https://www.editframe.com/guides/how-to-install-and-start-using-ffmpeg-in-under-10-minutes
 
 After installing LLM Studio, you need to download LLM, for my project, I used LLAMA3 with 8 billion parameters (8B) from META: https://llama.meta.com/llama3/
 
