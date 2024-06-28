@@ -47,7 +47,9 @@ This project uses several key libraries, here they are:
 
 # Installing and configuring the software
 
-For pydub to work, you need to install FFmpeg, here's how to install it: https://www.editframe.com/guides/how-to-install-and-start-using-ffmpeg-in-under-10-minutes
+Install Python https://www.python.org/downloads/
+
+Then for the library to work (except for the library itself) pydub to work, you need to install FFmpeg, here's how to install it: https://www.editframe.com/guides/how-to-install-and-start-using-ffmpeg-in-under-10-minutes
 
 After installing LLM Studio, you need to download LLM, for my project, I used LLAMA3 with 8 billion parameters (8B) from META: https://llama.meta.com/llama3/
 
