@@ -2,5 +2,4 @@ telebot==0.0.5
 openai==1.33.0
 gTTS==2.5.1
 SpeechRecognition==3.10.4
-librosa==0.10.2.post1
-soundfile==0.12.1
+pydub==0.25.1
