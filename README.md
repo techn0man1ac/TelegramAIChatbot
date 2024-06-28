@@ -47,7 +47,9 @@
 
 # Встановлення та налаштування ПЗ
 
-Для роботи pydub необхідно встановити FFmpeg, ось як його встановити: https://www.editframe.com/guides/how-to-install-and-start-using-ffmpeg-in-under-10-minutes
+Для початку встановлюємо Python https://www.python.org/downloads/
+
+Потім для роботи бібліотеки(окрім самої бібліотеки) pydub необхідно встановити FFmpeg, ось як його встановити: https://www.editframe.com/guides/how-to-install-and-start-using-ffmpeg-in-under-10-minutes
 
 Після встановлення LLM Studio треба скачати LLM, для свого проєкту, в якості ШІ, я використав LLAMA3 на 8 мільярдів параметрів(8B) від компанії META: https://llama.meta.com/llama3/
 
