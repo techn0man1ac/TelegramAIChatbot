@@ -14,7 +14,7 @@ from config import HISTORY_DIR
 from error_handling import log_error
 
 # Function to get the path for the user's history file
-def get_history_file(user_id):
+def get_history_file(user_id: int) -> str:
     # Create a directory for the user if it doesn't exist
     user_directory = os.path.join(HISTORY_DIR, str(user_id))
     os.makedirs(user_directory, exist_ok=True)
@@ -22,12 +22,12 @@ def get_history_file(user_id):
     return os.path.join(user_directory, "current_history.json")
 
 # Function to load the user's chat history from a file
-def load_history_from_file(user_id):
+def load_history_from_file(user_id: int):
     history_file = get_history_file(user_id)
     try:
         # Open and read the JSON file containing the user's chat history
-        with open(history_file, 'r', encoding='utf-8') as f:
-            return json.load(f)
+        with open(history_file, 'r', encoding='utf-8') as historyFile:
+            return json.load(historyFile)
     except FileNotFoundError:
         # If the file doesn't exist, return an empty list
         return []
@@ -37,7 +37,7 @@ def load_history_from_file(user_id):
         return []
 
 # Function to write the user's chat history back to a file
-def write_history_to_file(user_id, history):
+def write_history_to_file(user_id: int, history):
     try:
         # Get the path for the user's history file
         history_file = get_history_file(user_id)

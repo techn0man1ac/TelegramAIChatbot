@@ -13,8 +13,8 @@ import logging
 # Logging configuration
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-def log_error(message):
+def log_error(message: str):
     logging.error(message)
 
-def loggingMessage(loggMess):
+def loggingMessage(loggMess: str):
     logging.info(loggMess)

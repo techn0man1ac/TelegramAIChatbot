@@ -9,19 +9,29 @@ By Serhii Trush, 2024, MIT License.
 '''
 
 from config import HISTORY_DIR
-from pydub import AudioSegment
+from pydub import AudioSegment, utils
 import speech_recognition as sr
 from error_handling import log_error, loggingMessage
 import os
+import io
 
 # Function to recognize speech from a WAV file
-def recognize_speech(wav_file_path):
+def recognize_speech(audio_file_path):
     recognizer = sr.Recognizer()  # Initialize the speech recognition object
     try:
-        with sr.AudioFile(wav_file_path) as source:
-            audioRecord = recognizer.record(source)  # Record the audio from the file
-        text = recognizer.recognize_google(audioRecord, language='uk-UA')  # Recognize speech using Google
-        return text
+        textRecognize = "" # Recognize result write here
+        audio = AudioSegment.from_ogg(audio_file_path) # open audio
+        chunks = utils.make_chunks(audio, 60000) # separate audio to every 60 sec -> new audio peace
+        
+        for audioChunk in range(len(chunks)): # every 60 second new iteration
+            buffer = io.BytesIO() # use IO buffer for long audios 
+            chunks[audioChunk].export(buffer, format="wav") # recognize_google need wav format
+            buffer.seek(0)
+            with sr.AudioFile(buffer) as source:
+                audioRecord = recognizer.record(source)  # Record the audio from the file
+            textRecognize += " " + recognizer.recognize_google(audioRecord, language='uk-UA')  
+            # Recognize speech using Google and every cycle add text recognition
+        return textRecognize
     
     except Exception as e:
         loggingMessage(f"Error in speech recognition: {e}")  # Log the error
@@ -34,26 +44,20 @@ def recognize_voice_message(message, bot):
     
     try:
         loggingMessage(f"Received voice message")  # Log the receipt of a voice message
+        user_id = str(message.from_user.id)
         file_id = message.voice.file_id  # Get the file ID of the voice message
         loggingMessage(f"Downloading voice message with file_id: {file_id}")  # Log the download process
         file_info = bot.get_file(file_id)
         file_path = file_info.file_path
         file_ogg = bot.download_file(file_path)  # Download the voice message in OGG format
-        
-        user_dir = f"{HISTORY_DIR}{message.from_user.id}/"  # Create a directory for the user
-        os.makedirs(user_dir, exist_ok=True)
-
-        ogg_file_path = f"{user_dir}input_temp.ogg"  # Path to the temporary OGG file
-        with open(ogg_file_path, 'wb') as f:
-            f.write(file_ogg)  # Save the downloaded file
+        user_dir = os.path.join(HISTORY_DIR, user_id)
+        os.makedirs(user_dir, exist_ok=True) # Create a directory for the user
+        ogg_file_path = os.path.join(user_dir, "input_temp.ogg") # Path to the temporary OGG file
+        with open(ogg_file_path, 'wb') as opusOggDownload:  
+            opusOggDownload.write(file_ogg)  # Save the downloaded file
         loggingMessage(f"Download file {ogg_file_path}")
 
-        audio = AudioSegment.from_ogg(ogg_file_path)  # Convert OGG to WAV
-        wav_file_path = f"{user_dir}input_temp.wav"
-        audio.export(wav_file_path, format="wav")
-        loggingMessage(f"Convert OGG to WAV {wav_file_path}")
-
-        recognized_text = recognize_speech(wav_file_path)  # Recognize text from the audio file
+        recognized_text = recognize_speech(ogg_file_path)  # Recognize text from the audio file
         if recognized_text:
             bot.reply_to(message, f'"{recognized_text}".')  # Reply to the user with the recognized text
             handle_user_message(message, bot, recognized_text)  # Handle the text message
@@ -68,6 +72,3 @@ def recognize_voice_message(message, bot):
         if os.path.exists(ogg_file_path):
             os.remove(ogg_file_path)  # Delete the temporary OGG file
             loggingMessage(f"Delete temporary file {ogg_file_path}")
-        if os.path.exists(wav_file_path):
-            os.remove(wav_file_path)  # Delete the temporary WAV file
-            loggingMessage(f"Delete temporary file {wav_file_path}")
