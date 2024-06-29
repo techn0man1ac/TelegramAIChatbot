@@ -1,4 +1,4 @@
-BOT_TOKEN='7112931136:AAHHoVYqgn0Q5VIPYrW6SbBJTx5uBQq6ZbE'
+BOT_TOKEN='YOU_BOT_TOKEN'
 OPENAI_API_BASE='http://localhost:1234/v1/'
 OPENAI_API_KEY='lm-studio'
 LLM_MODEL='lmstudio-community/Meta-Llama-3-8B-Instruct-GGUF'
