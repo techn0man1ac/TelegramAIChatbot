@@ -1,6 +1,6 @@
 # Tech01 Simple Telegram Chat Bot with AI
 
-![Tech01 Chat Bot Screenshot](https://raw.githubusercontent.com/techn0man1ac/telegramChatBotIA/main/imgs/ScreenshotTelegram.jpg)
+![Tech01 Chat Bot Screenshot](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/oldVersions/V0_1/imgs/ScreenshotTelegram.jpg)
 
 # Overview
 
