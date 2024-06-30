@@ -12,16 +12,17 @@ from config import HISTORY_DIR
 from pydub import AudioSegment, utils
 import speech_recognition as sr
 from error_handling import log_error, loggingMessage
-import os
 import io
+
+chunksDurations = 45
 
 # Function to recognize speech from a WAV file
 def recognize_speech(audio_file_path):
     recognizer = sr.Recognizer()  # Initialize the speech recognition object
     try:
         textRecognize = "" # Recognize result write here
-        audio = AudioSegment.from_ogg(audio_file_path) # open audio
-        chunks = utils.make_chunks(audio, 60000) # separate audio to every 60 sec -> new audio peace
+        audio = AudioSegment.from_file(io.BytesIO(audio_file_path)) # open audio from buffer
+        chunks = utils.make_chunks(audio, chunksDurations * 1000) # separate audio to every "chunksDurations" seconds -> new audio peace
         
         for audioChunk in range(len(chunks)): # every 60 second new iteration
             buffer = io.BytesIO() # use IO buffer for long audios 
@@ -44,20 +45,13 @@ def recognize_voice_message(message, bot):
     
     try:
         loggingMessage(f"Received voice message")  # Log the receipt of a voice message
-        user_id = str(message.from_user.id)
+        #user_id = str(message.from_user.id)
         file_id = message.voice.file_id  # Get the file ID of the voice message
         loggingMessage(f"Downloading voice message with file_id: {file_id}")  # Log the download process
         file_info = bot.get_file(file_id)
         file_path = file_info.file_path
-        file_ogg = bot.download_file(file_path)  # Download the voice message in OGG format
-        user_dir = os.path.join(HISTORY_DIR, user_id)
-        os.makedirs(user_dir, exist_ok=True) # Create a directory for the user
-        ogg_file_path = os.path.join(user_dir, "input_temp.ogg") # Path to the temporary OGG file
-        with open(ogg_file_path, 'wb') as opusOggDownload:  
-            opusOggDownload.write(file_ogg)  # Save the downloaded file
-        loggingMessage(f"Download file {ogg_file_path}")
-
-        recognized_text = recognize_speech(ogg_file_path)  # Recognize text from the audio file
+        file_ogg = bot.download_file(file_path)  # Download to buffer voice message in OGG format
+        recognized_text = recognize_speech(file_ogg)  # Recognize text from the audio file
         if recognized_text:
             bot.reply_to(message, f'"{recognized_text}".')  # Reply to the user with the recognized text
             handle_user_message(message, bot, recognized_text)  # Handle the text message
@@ -67,8 +61,3 @@ def recognize_voice_message(message, bot):
     except Exception as e:
         log_error(f"Error during voice message recognition: {e}")  # Log an error during voice message recognition
         bot.reply_to(message, "An error occurred while processing the voice message.")  # Notify user of the error
-
-    finally:
-        if os.path.exists(ogg_file_path):
-            os.remove(ogg_file_path)  # Delete the temporary OGG file
-            loggingMessage(f"Delete temporary file {ogg_file_path}")
