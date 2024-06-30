@@ -1,4 +1,4 @@
-BOT_TOKEN='7112931136:AAHXZ1jynrQN8bDA_aKizAT8hSRzy5C6y0E'
+BOT_TOKEN='YOU_TELEGRAM_API_KEY'
 OPENAI_API_BASE='http://localhost:1234/v1/'
 OPENAI_API_KEY='lm-studio'
 LLM_MODEL='lmstudio-community/Meta-Llama-3-8B-Instruct-GGUF'
