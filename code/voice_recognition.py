@@ -14,7 +14,8 @@ import speech_recognition as sr
 from error_handling import log_error, loggingMessage
 import io
 
-chunksDurations = 45
+chunksDurations = 45 # 45 seconds
+recognitionLanguage = 'uk-UA' # Language recognition
 
 # Function to recognize speech from a WAV file
 def recognize_speech(audio_file):
@@ -30,7 +31,7 @@ def recognize_speech(audio_file):
             buffer.seek(0)
             with sr.AudioFile(buffer) as source:
                 audioRecord = recognizer.record(source)  # Record the audio from the file
-            textRecognize += " " + recognizer.recognize_google(audioRecord, language='uk-UA')  
+            textRecognize += recognizer.recognize_google(audioRecord, language=recognitionLanguage) + " "
             # Recognize speech using Google and every cycle add text recognition
         return textRecognize
     
@@ -45,7 +46,6 @@ def recognize_voice_message(message, bot):
     
     try:
         loggingMessage(f"Received voice message")  # Log the receipt of a voice message
-        #user_id = str(message.from_user.id)
         file_id = message.voice.file_id  # Get the file ID of the voice message
         loggingMessage(f"Downloading voice message with file_id: {file_id}")  # Log the download process
         file_info = bot.get_file(file_id)
@@ -53,10 +53,10 @@ def recognize_voice_message(message, bot):
         file_ogg = bot.download_file(file_path)  # Download to buffer voice message in OGG format
         recognized_text = recognize_speech(file_ogg)  # Recognize text from the audio file
         if recognized_text:
-            bot.reply_to(message, f'"{recognized_text}".')  # Reply to the user with the recognized text
+            bot.reply_to(message, f'"{recognized_text}".')  # Show text before convert in voice
             handle_user_message(message, bot, recognized_text)  # Handle the text message
         else:
-            bot.reply_to(message, "Unable to recognize speech.")  # Notify of failure in recognition
+            bot.reply_to(message, "Аудіо не розпізнано.")  # Notify of failure in recognition
     
     except Exception as e:
         log_error(f"Error during voice message recognition: {e}")  # Log an error during voice message recognition

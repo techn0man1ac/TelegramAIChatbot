@@ -12,7 +12,7 @@ By Serhii Trush, 2024, MIT License.
 voice_on = {}
 
 # Function to handle commands from the user
-def handle_command(user_message: str, history: str, user_id: int) -> str:
+def handle_command(user_message: str, history: list, user_id: int) -> str:
     global voice_on
     new_message = ""
     

@@ -22,6 +22,7 @@ def message_handler(message):
         handle_user_message(message, bot)  # Handle text messages
     elif message.content_type == "voice":
         recognize_voice_message(message, bot)  # Handle voice messages
+        
 
 def main():
     try:

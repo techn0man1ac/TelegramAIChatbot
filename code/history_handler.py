@@ -19,10 +19,11 @@ def get_history_file(user_id: int) -> str:
     user_directory = os.path.join(HISTORY_DIR, str(user_id))
     os.makedirs(user_directory, exist_ok=True)
     # Return the path to the current history JSON file
-    return os.path.join(user_directory, "current_history.json")
+    history_file_path = os.path.join(user_directory, "current_history.json")
+    return history_file_path
 
 # Function to load the user's chat history from a file
-def load_history_from_file(user_id: int):
+def load_history_from_file(user_id: int) -> list:
     history_file = get_history_file(user_id)
     try:
         # Open and read the JSON file containing the user's chat history

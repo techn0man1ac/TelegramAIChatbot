@@ -60,9 +60,12 @@ def handle_user_message(message, bot, recognized_text=None):
         if new_message["content"].strip():
             history.append(new_message)  # Add the assistant's response to the chat history
             write_history_to_file(user_id, history)  # Save the updated chat history
-            if is_voice_on(user_id):
-                voice = generate_voice(new_message["content"], user_id)  # Generate a voice message from text
+            if is_voice_on(user_id): # If voice message
+                text_to_voice = new_message["content"]
+                voice = generate_voice(text_to_voice, user_id)  # Generate a voice message from text
                 bot.send_voice(message.chat.id, voice)  # Send the voice message to the user
+                bot.reply_to(message, f'"{text_to_voice}".')  # Show text before convert in voice
+                
             else:
                 bot.reply_to(message, new_message["content"])  # Reply with the text message
         else:
