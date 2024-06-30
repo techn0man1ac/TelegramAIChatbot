@@ -17,11 +17,11 @@ import io
 chunksDurations = 45
 
 # Function to recognize speech from a WAV file
-def recognize_speech(audio_file_path):
+def recognize_speech(audio_file):
     recognizer = sr.Recognizer()  # Initialize the speech recognition object
     try:
         textRecognize = "" # Recognize result write here
-        audio = AudioSegment.from_file(io.BytesIO(audio_file_path)) # open audio from buffer
+        audio = AudioSegment.from_file(io.BytesIO(audio_file)) # open audio from buffer
         chunks = utils.make_chunks(audio, chunksDurations * 1000) # separate audio to every "chunksDurations" seconds -> new audio peace
         
         for audioChunk in range(len(chunks)): # every 60 second new iteration
