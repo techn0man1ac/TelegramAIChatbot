@@ -9,9 +9,10 @@ By Serhii Trush, 2024, MIT License.
 '''
 
 from gtts import gTTS  # Import the Google Text-to-Speech library
-from config import HISTORY_DIR  # Import the path to the chat history directory from a configuration file
 from error_handling import log_error  # Import the function to log errors
 import io
+
+ttsLanguage = "uk" # Speack language set here
 
 # Generate an audio file from text using Google Text-to-Speech.
 def generate_voice(textToSpeech: str, user_id: int):
@@ -19,7 +20,7 @@ def generate_voice(textToSpeech: str, user_id: int):
 # user_id (int): Unique identifier for the user.
 
     try:
-        tts = gTTS(text=textToSpeech, lang='uk', slow=False)  # Create a gTTS object for Ukrainian language
+        tts = gTTS(text=textToSpeech, lang=ttsLanguage, slow=False)  # Create a gTTS object for Ukrainian language
         buffer = io.BytesIO() # use IO buffer for audio 
         buffer.name = "temp.mp3"
         tts.write_to_fp(buffer)  # Save the generated speech to buffer

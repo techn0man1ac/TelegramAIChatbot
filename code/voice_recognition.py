@@ -8,7 +8,6 @@ https://github.com/techn0man1ac/TelegramAIChatbot
 By Serhii Trush, 2024, MIT License.
 '''
 
-from config import HISTORY_DIR
 from pydub import AudioSegment, utils
 import speech_recognition as sr
 from error_handling import log_error, loggingMessage
