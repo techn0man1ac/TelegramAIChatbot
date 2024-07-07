@@ -45,38 +45,57 @@ This project uses several key libraries, here they are:
 - SpeechRecognition == 3.10.4
 - pydub == 0.25.1
 
-# Installing and configuring the software
+# Install and configure the software
 
-Install Python https://www.python.org/downloads/
+First, install Python https://www.python.org/downloads/
 
-Then for the library(except for the library itself) pydub to work, you need to install FFmpeg, here's how to install it: https://www.editframe.com/guides/how-to-install-and-start-using-ffmpeg-in-under-10-minutes
+Next, install Git https://git-scm.com/downloads and log in using GitHub.
 
-After installing LLM Studio, you need to download LLM, for my project, I used LLAMA3 with 8 billion parameters (8B) from META: https://llama.meta.com/llama3/
+Download the repository to the directory you need (for example, "C:\Projects\") using the "git clone" command, which we write in the command line (CMD):
 
-To install a large language model in your system, you need to download it to LLM Studio, for this we take the following steps:
+`git clone https://github.com/techn0man1ac/TelegramAIChatbot.git`.
 
-![LLM_Studio_LLAMA3_Download](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/LLM_Studio_LLAMA3_Download.png)
+You can also download without git, that is, without registration, simply by downloading the repository archive from this link: https://github.com/techn0man1ac/TelegramAIChatbot/archive/refs/heads/main.zip
 
-1. Click the search button.
-2. Write the name of the desired LLM in the search field, in my case it is `Llama 3 8B Instruct`.
-3. Download it. There are different versions of quantization (compression of information stored in the LLM), I suggest starting with `Q4_K_M` - the golden mean between speed and quality of answers. For more productive computers there are "Q8" or "fp32" versions.
+After downloading, go to the "TelegramAIChatbot" directory, then write in the command line `cd TelegramAIChatbot` - move to the directory with the project files;
 
-After loading the large language model, click the `Local Server` button to start the server, which will provide the ability to "communicate" with LLM using the local server at `http://localhost:1234/v1` or `http://localhost:1234/v1/chat/completions`.
+Install all the necessary libraries for the chatbot to work (see the screenshot below):
 
-![LLM_Studio_LocalServerStart](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/LLM_Studio_LocalServerStart.png)
+`pip install -r requirements.txt`.
 
-After setting up the software, you need to get an API key, here's a great article on how to do it: https://www.freecodecamp.org/news/how-to-create-a-telegram-bot-using-python/
+![RequirementsInstall](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/CMD.png)
 
-![TelegramBotFather](https://github.com/techn0man1ac/TelegramAIChatbot/blob/main/imgs/TelegramBotFather.png)
+It may be the case (but not necessarily) that for the pydub library to work (in addition to the library itself), you need to install FFmpeg, here's how to install it: https://www.editframe.com/guides/how-to-install-and-start-using-ffmpeg-in-under-10-minutes
 
-The next step is to register the API key received from `@botfather` in the code of the file `config.py` or for convenience, you can enter all the parameters by running the script `ui.py`.
+After installing the libraries, go to the "code" directory with the command `cd code` and run the bot's GUI module with the command `python UI.py`:
+
+![RunUI](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/CMD_RUN.png)
+
+The graphical interface with the chatbot configuration will open:
 
 ![BotConfigUserInterface](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/BotConfigUserInterface.png)
 
-1. Open the file `config.py` thereby setting the absolute address to the working directory with the project.
-2. Copy the API key (change the keyboard layout to "eng", this is important). And it is also important to copy the absolute path to the `conversations` directory in the `HISTORY_DIR` field, for example `C:\Projects\TelegramAIChatbot\conversations\`.
-3. Save the configuration to the `config.py` file by clicking the button.
-4. Launch the bot from the button and not by executing the main script. After that, the Telegram chatbot will execute the `main.py` file and everything should work - you can write your chatbot in Ukrainian.
+At this stage, you need to take the following steps:
+
+1) Select the path to the configuration file "config.py" using the button on the top right;
+2) When the parameters are loaded (all fields are filled in), you need to get the API key from the main Telegram bot. It can be found by typing @BotFather( https://t.me/BotFather ) in the contact search field in Telegram. The interface is intuitive, you create a bot by naming it, then go to the bot management and click the button to get the API key. Just in case, I'll leave you this link https://www.freecodecamp.org/news/how-to-create-a-telegram-bot-using-python/, which describes how to get it first (to the Python code).
+Important note - before changing the "BOT_TOKEN" field, change the keyboard layout to English, and then insert the key.
+3) Then click "Save configuration".
+4) Click the "Run bot" button and in the console that runs with the UI.py module, a message will appear that the bot is in the runtime (I sent him 2 messages, which can be seen in the logs):
+
+![BotRun](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/BotRun.png)
+
+After installing LLM Studio, you need to download LLM, for my project, as an AI, I used LLAMA3 with 8 billion parameters (8B) from META: https://llama.meta.com/llama3/
+
+To install a large language model in your system, you need to download it to LLM Studio, for this we just click one button:
+
+![LLM_Studio_LLAMA3_Download](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/LamaDownload.png)
+
+After loading the large language model, press the `Local Server` button (1) - start the server (2) by selecting `Llama 3 - 8B Instruct`(3).
+
+![LLM_Studio_LocalServerRun](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/LocalServerRun.png)
+
+Now you can write to the bot in Telegram to test the work.
 
 # Project structure
 
