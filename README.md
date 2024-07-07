@@ -49,34 +49,55 @@
 
 Для початку встановлюємо Python https://www.python.org/downloads/
 
-Потім для роботи бібліотеки(окрім самої бібліотеки) pydub необхідно встановити FFmpeg, ось як його встановити: https://www.editframe.com/guides/how-to-install-and-start-using-ffmpeg-in-under-10-minutes
+Далі встановлюємо Git https://git-scm.com/downloads та логінемось там використовуючи GitHub.
+
+Скачуємо репозиторій у потрібний Вам каталог(наприклад «C:\Projects\») командою «git clone», яку прописуємо у командному рядку(CMD):
+
+`git clone https://github.com/techn0man1ac/TelegramAIChatbot.git`
+
+Скачувати можна і без git, тобто без реєстрації, просто скачавши архів репозиторію по ось цьому посиланні: https://github.com/techn0man1ac/TelegramAIChatbot/archive/refs/heads/main.zip
+
+Після завантаження заходимо в каталог «TelegramAIChatbot» далі пишемо у командному рядку `cd TelegramAIChatbot` — переміщення в каталог з файлами проєкту;
+
+Встановлюємо всі необхідні бібліотеки для роботи чат-боту(на скріні нижче):
+
+`pip install -r requirements.txt`
+
+![RequirementsInstall](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/CMD.png)
+
+Може бути так(але не обов'язково), що для роботи бібліотеки(окрім самої бібліотеки) pydub необхідно встановити FFmpeg, ось як його встановити: https://www.editframe.com/guides/how-to-install-and-start-using-ffmpeg-in-under-10-minutes
+
+Після встановлення бібліотек заходимо у каталог «code» командою `cd code` та запускаємо модуль графічного інтерфейсу боту командою `python UI.py`:
+
+![RunUI](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/CMD_RUN.png)
+
+Відкриється графічний інтерфейс з налаштуванням чат-боту:
+
+![BotConfigUserInterface](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/BotConfigUserInterface.png)
+
+На цьому етапі треба зробити наступні кроки:
+
+1) Вибрати шлях до конфігураційного файлу «config.py» кнопкою справа зверху;
+2) Коли параметри завантажені(усі поля заповнені), потрібно отримати API ключ у головного Telegram боту. Його можна знайти якщо набрати в Telegram @BotFather( https://t.me/BotFather ) у полі пошуку контактів. Інтерфейс інтуїтивно зрозумілий, створюєте бота даючи йому ім’я, потім заходите в керування ботом та тиснете кнопку отримати API key. Про всяк випадок, лишу це посилання https://www.freecodecamp.org/news/how-to-create-a-telegram-bot-using-python/ , там описується спочатку як його отримати(до Python коду).
+Важливий нюанс — перед тим як змінювати поле «BOT_TOKEN» `змініть розкладку клавіатури на англійську`, і тоді вставляйте ключ.
+3) Після тисніть «Зберегти конфігурацію».
+4) Тисніть кнопку «Запустити бот» і в консолі, яка запускається разом з UI.py модулем з’явиться повідомлення, що бот в рантаймі(я йому відправив 2 повідомлення, що видно по логах):
+
+![BotRun](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/BotRun.png)
 
 Після встановлення LLM Studio треба скачати LLM, для свого проєкту, в якості ШІ, я використав LLAMA3 на 8 мільярдів параметрів(8B) від компанії META: https://llama.meta.com/llama3/
 
 Щоб встановити велику мовну модель в свою систему потрібно її скачати в LLM Studio, для цього робимо наступні кроки:
 
-![LLM_Studio_LLAMA3_Download](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/LLM_Studio_LLAMA3_Download.png)
+![LLM_Studio_LLAMA3_Download](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/LamaDownload.png)
 
 1. Натискаємо кнопку пошуку.
 2. Пишемо у полі пошуку назву потрібної LLM, у моєму випадку це `Llama 3 8B Instruct`
-3. Скачуємо. Доступні різні версії квантування(стиснення інформації яка зберігається в LLM), пропоную почати з `Q4_K_M` - золота середина між швидкодією та якістю відповідей. Для більш продуктивніших комп'ютерів є "Q8" або "fp32" версії.
+3. Скачуємо. Доступні різні версії квантування(стиснення інформації яка зберігається в LLM), пропоную почати з `Q4_K_S` - золота середина між швидкодією та якістю відповідей. Для більш продуктивніших комп'ютерів є "Q8" або "fp32" версії.
 
-Після завантаження великої мовної моделі тиснемом кнопку `Local Server` - запускаємо сервер, який забезпечить можливість "спілкуватись" з LLM використовуючи локальний сервер за адресою `http://localhost:1234/v1` або `http://localhost:1234/v1/chat/completions`.
+![LLM_Studio_LocalServerRun](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/LocalServerRun.png)
 
-![LLM_Studio_LocalServerStart](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/LLM_Studio_LocalServerStart.png)
-
-Після налаштування програмного забезпечення потрібно отримати API-ключ, ось чудова стаття як це можна зробити: https://www.freecodecamp.org/news/how-to-create-a-telegram-bot-using-python/
-
-![TelegramBotFather](https://github.com/techn0man1ac/TelegramAIChatbot/blob/main/imgs/TelegramBotFather.png)
-
-Наступним кроком є прописати API-ключ, який отримали від `@botfather` в коді файлу `config.py` або для зручності можна всі параметри можна ввести виконавши скрипт  `ui.py`.
-
-![BotConfigUserInterface](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/BotConfigUserInterface.png)
-
-1. Відкрити файл `config.py` тим самим задавши абсолютну адресу до робочого каталогу з проєктом.
-2. Скопіювати API-ключ(змінити розкладку клавіатури на "eng", це важливо). А також важливо у поле `HISTORY_DIR` скопіювати абсолютний шлях до каталогу `conversations`, наприклад `C:\Projects\TelegramAIChatbot\conversations\`.
-3. Зберегти конфігурацію у файл `config.py` натиснувши кнопку.
-4. Запустити бота з кнопки а не виконавши головний скрипт. Після цього Telegram чат-бот виконає файл `main.py` і все повинно запрацювати - можете написати своєму чат-боту українською мовою.
+Після завантаження великої мовної моделі тиснемом кнопку `Local Server`(1) - запускаємо сервер(2) вибравши зі списку `Llama 3 - 8B Instruct`(3), який забезпечить можливість "спілкуватись" з LLM використовуючи локальний сервер за адресою `http://localhost:1234/v1` або `http://localhost:1234/v1/chat/completions`.
 
 # Структура проєкту
 
