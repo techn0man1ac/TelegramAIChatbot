@@ -1,6 +1,6 @@
 '''
 Ukrainian-language Telegram chatbot using artificial intelligence. 
-This project is based on LLM Studio, which works as a server for the large language model LLAMA3 8B from META. 
+This project is based on LM Studio, which works as a server for the large language model LLAMA3 8B from META. 
 It processes user messages and generates chatbot tokens (responses).
 
 https://github.com/techn0man1ac/TelegramAIChatbot
