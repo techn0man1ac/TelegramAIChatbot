@@ -6,7 +6,7 @@
 ![Copilot_Generated_Bot_Image](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/CopilotGeneratedBotImage.jpg)
 > The project wrapper was generated using Copilot in Windows, the original wrapper image can be found [here](https://www.bing.com/images/create/tech01aibot-telegram-bot-image-with-the-text-27hell/1-66376f0c15b14dce9b8543e76374b77a?id=%2ffnQhXHy14ZA7U%2bG1mpTTg%3d%3d&view=detailv2&idpp=genimg&idpclose=1&thId=OIG2.0xK8wnUzR5ppwvD_Vfi3&frame=sydedg&FORM=SYDBIC).
 
-Ukrainian-language Telegram chatbot using artificial intelligence. This project is based on LLM Studio, which works as a server for the large language model LLAMA3 8B from META. It processes user messages and generates chatbot tokens (responses).
+Ukrainian-language Telegram chatbot using artificial intelligence. This project is based on LM Studio, which works as a server for the large language model LLAMA3 8B from META. It processes user messages and generates chatbot tokens (responses).
 
 # Features.
 
@@ -28,10 +28,10 @@ The context of the conversation, namely the contents of the `history` variable i
 
 A standard library is used to implement reading the JSON structure: https://docs.python.org/uk/3/library/json.html
 
-To work with a large language model, 2 software elements are used, namely the library from OpenAI, which in turn interacts with LLM Studio.
+To work with a large language model, 2 software elements are used, namely the library from OpenAI, which in turn interacts with LM Studio.
 - You can work with the OpenAI API in Python using the library, here is the link: https://pypi.org/project/openai/
-This library has a wide range of functionality for working with AI, and I chose it for my chatbot project because of this convenience. Although it is designed to work with OpenAI products, it can also be used for other projects, such as LLM Studio.
-- LLM Studio is a handy tool with a graphical user interface (GUI), it is useful for getting started with large language models (LLM), you can download it for your operating system here: https://lmstudio.ai/
+This library has a wide range of functionality for working with AI, and I chose it for my chatbot project because of this convenience. Although it is designed to work with OpenAI products, it can also be used for other projects, such as LM Studio.
+- LM Studio is a handy tool with a graphical user interface (GUI), it is useful for getting started with large language models (LLM), you can download it for your operating system here: https://lmstudio.ai/
 
 ![LLM_Studio](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/LLM_Studio.png)
 
@@ -85,9 +85,9 @@ Important note - before changing the "BOT_TOKEN" field, change the keyboard layo
 
 ![BotRun](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/BotRun.png)
 
-After installing LLM Studio, you need to download LLM, for my project, as an AI, I used LLAMA3 with 8 billion parameters (8B) from META: https://llama.meta.com/llama3/
+After installing LM Studio, you need to download LLM, for my project, as an AI, I used LLAMA3 with 8 billion parameters (8B) from META: https://llama.meta.com/llama3/
 
-To install a large language model in your system, you need to download it to LLM Studio, for this we just click one button:
+To install a large language model in your system, you need to download it to LM Studio, for this we just click one button:
 
 ![LLM_Studio_LLAMA3_Download](https://raw.githubusercontent.com/techn0man1ac/TelegramAIChatbot/main/imgs/LamaDownload.png)
 
